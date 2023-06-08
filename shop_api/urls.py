@@ -3,6 +3,7 @@ from shop_api import settings
 from django.contrib import admin
 from django.urls import path, include
 from product import views
+from . import swagger
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,4 +22,5 @@ urlpatterns = [
     path('api/v1/products/reviews/', views.ProductsReviewsAPIView.as_view()),
     path('api/users/', include('users.urls')),
 ]
+urlpatterns += swagger.urlpatterns
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
